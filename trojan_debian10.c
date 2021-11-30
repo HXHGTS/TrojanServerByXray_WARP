@@ -170,6 +170,8 @@ int KernelUpdate() {
     config = fopen("/usr/local/etc/sni.conf", "w");
     fprintf(config, "%s", sni);
     fclose(config);
+    system("curl -sSL https://raw.githubusercontent.com/HXHGTS/TCPOptimization/master/KernelUpdate_debian10.sh | sh");
     system("curl -sSL https://cdn.jsdelivr.net/gh/HXHGTS/TCPOptimization/TCPO_debian10.sh | sh");
+    system("curl -sSL https://raw.githubusercontent.com/HXHGTS/Cloudflare_WARP_Connect/main/netflix_support_debian.sh | sh");
     return 0;
 }
