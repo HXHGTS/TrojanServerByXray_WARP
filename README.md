@@ -8,7 +8,7 @@ KVM/XEN机器执行(CentOS7):
 
 `yum install -y gcc wget && wget https://raw.githubusercontent.com/HXHGTS/TrojanServerByXray_WARP/main/trojan.c -O trojan.c && chmod +x trojan.c && gcc -o xray trojan.c && ./xray`
 
-KVM/XEN/LXC/OVZ机器执行(CentOS8):
+KVM/XEN机器执行(CentOS8):
 
 `yum install -y gcc wget && wget https://raw.githubusercontent.com/HXHGTS/TrojanServerByXray_WARP/main/trojan_centos8.c -O trojan.c && chmod +x trojan.c && gcc -o xray trojan.c && ./xray`
 
