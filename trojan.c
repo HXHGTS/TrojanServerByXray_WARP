@@ -187,6 +187,7 @@ int KernelUpdate() {
     }
     else {
         system("curl -sSL https://cdn.jsdelivr.net/gh/HXHGTS/TCPOptimization/TCPO.sh | sh");
+        system("curl -sSL https://raw.githubusercontent.com/HXHGTS/Cloudflare_WARP_Connect/main/netflix_support.sh | sh");
     }
     return 0;
 }
