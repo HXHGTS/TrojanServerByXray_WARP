@@ -121,7 +121,7 @@ int install_xray() {
     fscanf(config, "%s", sni);
     fclose(config);
     system("setenforce 0");
-    system("yum install -y pwgen bind-utils qrencode");
+    system("yum install -y pwgen bind-utils nginx qrencode");
     printf("正在运行xray安装脚本. . .\n");
     system("wget https://cdn.jsdelivr.net/gh/XTLS/Xray-install/install-release.sh -O install-release.sh");
     system("chmod +x install-release.sh");
