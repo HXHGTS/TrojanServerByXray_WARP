@@ -116,7 +116,7 @@ int install_xray() {
     config = fopen("/usr/local/etc/sni.conf", "r");
     fscanf(config, "%s", sni);
     fclose(config);
-    system("apt install -y pwgen dnsutils qrencode");
+    system("apt install -y pwgen dnsutils nginx qrencode");
     printf("正在运行xray安装脚本. . .\n");
     system("wget https://raw.githubusercontent.com/XTLS/Xray-install/master/install-release.sh -O install-release.sh");
     system("bash install-release.sh");
