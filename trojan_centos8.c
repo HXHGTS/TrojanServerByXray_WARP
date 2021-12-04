@@ -129,7 +129,7 @@ int install_xray() {
     system("cp -rf /root/1.pem /usr/local/etc/xray/certificate.crt");
     system("cp -rf /root/2.pem /usr/local/etc/xray/private.key");
     printf("正在生成配置文件. . .\n");
-    system("curl https://raw.githubusercontent.com/HXHGTS/TrojanServerByXray/main/config.json.1 > /usr/local/etc/xray/config.json");
+    system("curl https://raw.githubusercontent.com/HXHGTS/TrojanServerByXray_WARP/main/config.json.1 > /usr/local/etc/xray/config.json");
     printf("正在生成强密码. . .\n");
     system("mkpasswd -l 28 > /usr/local/etc/xray/passwd.conf");
     config = fopen("/usr/local/etc/xray/passwd.conf", "r");
@@ -138,7 +138,7 @@ int install_xray() {
     config = fopen("/usr/local/etc/xray/config.json", "a");
     fprintf(config, "                        \"password\":\"%s\"\n", passwd);
     fclose(config);
-    system("curl https://raw.githubusercontent.com/HXHGTS/TrojanServerByXray/main/config.json.2 >> /usr/local/etc/xray/config.json");
+    system("curl https://raw.githubusercontent.com/HXHGTS/TrojanServerByXray_WARP/main/config.json.2 >> /usr/local/etc/xray/config.json");
     printf("正在启动xray并将xray写入开机引导项. . .\n");
     system("systemctl stop xray");
     system("systemctl enable xray && systemctl start xray");
