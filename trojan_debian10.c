@@ -162,17 +162,25 @@ int QRCodeGen() {
 }
 
 int KernelUpdate() {
-    if (fopen("/root/1.pem", "r") == NULL || fopen("/root/2.pem", "r") == NULL) {
-    printf("检测到证书与私钥文件未按照规定方式放置于根目录，强制退出！\n");
-    exit(0);
+    if ((fopen("KernelUpdate.sh", "r")) == NULL) {
+        if (fopen("/root/1.pem", "r") == NULL || fopen("/root/2.pem", "r") == NULL) {
+        printf("检测到证书与私钥文件未按照规定方式放置于根目录，强制退出！\n");
+        exit(0);
     }
-    printf("请输入已绑定此服务器ip的域名:");
-    scanf("%s", sni);
-    config = fopen("/usr/local/etc/sni.conf", "w");
-    fprintf(config, "%s", sni);
-    fclose(config);
-    system("curl -sSL https://raw.githubusercontent.com/HXHGTS/TCPOptimization/master/KernelUpdate_debian10.sh | sh");
-    system("curl -sSL https://cdn.jsdelivr.net/gh/HXHGTS/TCPOptimization/TCPO_debian10.sh | sh");
-    system("curl -sSL https://raw.githubusercontent.com/HXHGTS/Cloudflare_WARP_Connect/main/netflix_support_debian.sh | sh");
+        printf("请输入已绑定此服务器ip的域名:");
+        scanf("%s", sni);
+        config = fopen("/usr/local/etc/sni.conf", "w");
+        fprintf(config, "%s", sni);
+        fclose(config);
+        printf("正在升级新内核. . .\n");
+        system("wget https://cdn.jsdelivr.net/gh/HXHGTS/TCPOptimization/KernelUpdate_debian10.sh -O KernelUpdate.sh");
+        system("chmod +x KernelUpdate.sh");
+        printf("正在升级，将自动触发重启以应用配置. . .\n");
+        system("bash KernelUpdate.sh");
+    }
+    else {
+        system("curl -sSL https://cdn.jsdelivr.net/gh/HXHGTS/TCPOptimization/TCPO_debian10.sh | sh");
+        system("curl -sSL https://raw.githubusercontent.com/HXHGTS/Cloudflare_WARP_Connect/main/netflix_support.sh | sh");
+    }
     return 0;
 }
