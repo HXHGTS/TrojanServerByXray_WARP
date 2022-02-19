@@ -3,6 +3,11 @@
                 "fallbacks": [
                     {
                         "dest": 80
+                    },
+                    {
+                        "path": "/GameDownload",
+                        "dest": 1080,
+                        "xver": 1
                     }
                 ]
             },
@@ -21,40 +26,11 @@
                     ]
                 }
             }
-        }
-    ],
-  "outbounds": [
-    {
-      "tag":"INTERNET_OUT",
-      "protocol": "freedom"
-    },
-    {
-      "tag":"WARP_OUT",
-      "protocol": "freedom",
-      "settings": {
-        "domainStrategy": "UseIPv4"
-      },
-      "sendThrough": "172.16.0.2"
-    }
-  ],
-  "routing": {
-    "rules": [
-      {
-        "type": "field",
-        "outboundTag": "WARP_OUT",
-        "domain": ["geosite:netflix"]
-      },
-      {
-        "type": "field",
-        "outboundTag": "INTERNET_OUT",
-        "network": "udp,tcp"
-      }
-    ]
-  },
-  "dns": {
-    "servers": [
-      "1.1.1.1",
-      "1.0.0.1"
-]
-}
-}
+        },
+        {
+            "port": 1080,
+            "listen": "127.0.0.1",
+            "protocol": "trojan",
+            "settings": {
+                "clients": [
+                    {
