@@ -143,6 +143,10 @@ int install_xray() {
     fprintf(config, "                        \"password\":\"%s\"\n", passwd);
     fclose(config);
     system("curl https://raw.githubusercontent.com/HXHGTS/TrojanServerByXray_WARP/main/config.json.2 >> /usr/local/etc/xray/config.json");
+    config = fopen("/usr/local/etc/xray/config.json", "a");
+    fprintf(config, "                        \"password\":\"%s\"\n", passwd);
+    fclose(config);
+    system("curl https://raw.githubusercontent.com/HXHGTS/TrojanServerByXray_WARP/main/config.json.3 >> /usr/local/etc/xray/config.json");
     printf("正在启动xray并将xray写入开机引导项. . .\n");
     system("systemctl stop xray");
     system("systemctl enable xray && systemctl start xray");
@@ -164,7 +168,7 @@ int install_xray() {
 
 int QRCodeGen() {
     config = fopen("/usr/local/etc/xray/trojan.txt", "w");
-    fprintf(config, "trojan://%s@%s:2053#%s\n",passwd,sni,sni);
+    fprintf(config, "trojan://%s@%s:443#%s\n",passwd,sni,sni);
     fclose(config);
     return 0;
 }
